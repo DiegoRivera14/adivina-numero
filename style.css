@@ -1,0 +1,183 @@
+:root {
+  --fondo: #fff8ec;
+  --tarjeta: #ffffff;
+  --texto: #2d2416;
+  --texto-suave: #8a7b64;
+  --borde: #efe2c9;
+  --acento: #e8590c;
+  --acento-claro: #fff0e3;
+  --alto: #d6336c;
+  --bajo: #1c7ed6;
+  --acierto: #2b8a3e;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: var(--fondo);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--texto);
+  padding: 16px;
+}
+
+.juego {
+  width: 100%;
+  max-width: 440px;
+  background: var(--tarjeta);
+  border-radius: 20px;
+  padding: 28px 24px;
+  text-align: center;
+  box-shadow: 0 12px 30px rgba(45, 36, 22, 0.08);
+}
+
+h1 {
+  font-size: 1.6rem;
+  margin-bottom: 18px;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+/* ---------- Dificultad ---------- */
+.dificultad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.nivel {
+  border: 1px solid var(--borde);
+  background: none;
+  border-radius: 10px;
+  padding: 8px 4px;
+  font-weight: 600;
+}
+
+.nivel small {
+  display: block;
+  font-weight: 400;
+  font-size: 0.7rem;
+  color: var(--texto-suave);
+  margin-top: 2px;
+}
+
+.nivel.activo {
+  border-color: var(--acento);
+  background: var(--acento-claro);
+  color: var(--acento);
+}
+
+.instrucciones {
+  color: var(--texto-suave);
+  margin: 20px 0 12px;
+}
+
+/* ---------- Formulario ---------- */
+.formulario {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.formulario input {
+  width: 140px;
+  padding: 12px;
+  font-size: 1.4rem;
+  text-align: center;
+  border: 2px solid var(--borde);
+  border-radius: 10px;
+}
+
+.formulario input:focus {
+  outline: none;
+  border-color: var(--acento);
+}
+
+.formulario button {
+  background: var(--acento);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 0 20px;
+  font-weight: 600;
+}
+
+.formulario button:disabled,
+.formulario input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ---------- Pista ---------- */
+.pista {
+  font-size: 1.15rem;
+  font-weight: 600;
+  min-height: 1.6em;
+  margin: 16px 0;
+}
+
+.pista.alto { color: var(--alto); }
+.pista.bajo { color: var(--bajo); }
+.pista.acierto { color: var(--acierto); }
+.pista.derrota { color: var(--texto); }
+
+/* ---------- Marcador e historial ---------- */
+.marcador {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: var(--texto-suave);
+  border-top: 1px solid var(--borde);
+  padding-top: 12px;
+}
+
+.historial {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 14px;
+  min-height: 30px;
+}
+
+.historial li {
+  border-radius: 14px;
+  padding: 3px 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: white;
+}
+
+.historial li.alto { background: var(--alto); }
+.historial li.bajo { background: var(--bajo); }
+.historial li.acierto { background: var(--acierto); }
+
+.reiniciar {
+  margin-top: 18px;
+  border: 2px solid var(--acento);
+  background: none;
+  color: var(--acento);
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-weight: 600;
+}
+
+.oculto { display: none; }
+
+/* Pequeña sacudida al fallar */
+@keyframes sacudir {
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+
+.sacudir { animation: sacudir 0.25s; }

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adivina el número</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="juego">
+    <h1>🎯 Adivina el número</h1>
+
+    <div class="dificultad" role="group" aria-label="Dificultad">
+      <button class="nivel activo" data-max="50" data-intentos="10">Fácil<small>1–50 · 10 intentos</small></button>
+      <button class="nivel" data-max="100" data-intentos="7">Normal<small>1–100 · 7 intentos</small></button>
+      <button class="nivel" data-max="1000" data-intentos="10">Difícil<small>1–1000 · 10 intentos</small></button>
+    </div>
+
+    <p id="instrucciones" class="instrucciones"></p>
+
+    <form id="formulario" class="formulario">
+      <input type="number" id="intento" required aria-label="Tu número">
+      <button type="submit" id="probar">Probar</button>
+    </form>
+
+    <p id="pista" class="pista" aria-live="polite"></p>
+
+    <div class="marcador">
+      <span>Intentos restantes: <b id="restantes"></b></span>
+      <span>Récord: <b id="record">—</b></span>
+    </div>
+
+    <ul id="historial" class="historial" aria-label="Números probados"></ul>
+
+    <button id="reiniciar" class="reiniciar oculto">Jugar otra vez</button>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
